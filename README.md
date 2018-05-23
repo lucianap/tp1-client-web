@@ -1,3 +1,11 @@
+Pre steps:
+(en caso de no tener instalado npm) sudo apt-get install npm
+(en caso de no tener instalado nvm) sudo apt-get install nvm
+Correr: 
+sudo npm install -g @angular/cli
+nvm install 8.9
+(en la raíz del proyecto) ng serve --open
+
 # Tp1ClientWeb
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
