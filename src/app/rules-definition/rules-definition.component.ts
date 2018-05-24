@@ -12,7 +12,8 @@ export class RulesDefinitionComponent implements OnInit {
 
   constructor(private stateService: StateService) { }
 
-  addRule() {
+  public addRule() {
+    console.log(this._rule);
     this.stateService.postRules(this._rule);
   }
 

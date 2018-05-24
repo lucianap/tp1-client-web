@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { StateService } from '../state.service';
-import { State } from '../State';
-import { Observable, of } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {StateService} from '../state.service';
 
 @Component({
   selector: 'app-state',
