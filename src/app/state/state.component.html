@@ -1,4 +1,49 @@
-<p>
-{{_state | json}}
-</p>
+<div class="card">
+  <div class="card-header">
+    Metrics values
+  </div>
+
+  <div class="card-body" *ngFor="let rule of _state.rules">
+
+    <div *ngIf="rule.type == 'counter'">
+
+      <ul class="list-group">
+        <li class="list-group-item bg-dark text-white">
+        <h5 class="card-title">{{rule.name}}</h5>
+        </li>
+        <li class="list-group-item">
+          Type {{rule.type}}
+        </li>
+        <li class="list-group-item">
+          Params {{"[" + rule.params.join(" / ") + "]"}}
+        </li>
+        <li class="list-group-item">
+          Condition {{rule.condition}}
+        </li>
+        <li class="list-group-item">
+         Values
+          <div *ngFor="let ruleValue of rule['truth-table']" >
+
+            <div *ngIf="(rule.params | json) == '[]'">
+              {{ruleValue.key}}
+              {{ruleValue.value}}
+            </div>
+
+            <div *ngIf="ruleValue.key[0] != null">
+              {{ruleValue.key}}
+              {{ruleValue.value}}
+            </div>
+          </div>
+        </li>
+      </ul>
+      <p>
+        {{rule | json}}
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+
 

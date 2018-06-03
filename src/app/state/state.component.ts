@@ -27,4 +27,5 @@ export class StateComponent implements OnInit {
       .subscribe(rules => {console.log(rules); this._state = rules});
   }
 
+
 }

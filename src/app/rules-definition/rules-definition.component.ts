@@ -8,13 +8,20 @@ import {StateService} from "../state.service";
 })
 export class RulesDefinitionComponent implements OnInit {
 
-  _rule = '';
+  _ruleCounter = '[["define-counter","spam-count",[],["current","spam"]]]';
+  _ruleSignal = '[["define-signal",{"spam-fraction":["\\/",["counter-value","spam-count",[]],["counter-value","email-count",[]]]},true]]';
+
 
   constructor(private stateService: StateService) { }
 
-  public addRule() {
-    console.log(this._rule);
-    this.stateService.postRules(this._rule);
+  public addRuleCounter() {
+    console.log(this._ruleCounter);
+    this.stateService.postRules(this._ruleCounter);
+  }
+
+  public addRuleSignal() {
+    console.log(this._ruleSignal);
+    this.stateService.postRules(this._ruleSignal);
   }
 
   ngOnInit() {

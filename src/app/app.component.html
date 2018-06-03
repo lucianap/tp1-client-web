@@ -1,7 +1,14 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>{{ title }}</h1>
-  <app-state></app-state>
-  <app-rules-definition></app-rules-definition>
+<!-- header -->
+<div>
+  <app-header></app-header>
+</div>
+<!-- body -->
+<div>
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
 </div>
 
