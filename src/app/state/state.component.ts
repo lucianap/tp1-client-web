@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StateService} from '../state.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-state',
@@ -8,24 +9,39 @@ import {StateService} from '../state.service';
 })
 export class StateComponent implements OnInit {
 
-
   _state: string;
-  errorMessage = "";
+  _signals: string;
   interval: any;
+  _refreshRate = 2000;
+  _id = 'default';
 
-  constructor(private stateService: StateService) { }
+  constructor(private stateService: StateService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    if(this.route.snapshot.paramMap.get('id')) {
+      this._id = this.route.snapshot.paramMap.get('id')
+    }
+
     this.getState();
     this.interval = setInterval(() => {
       this.getState();
-    }, 2000);
+      this.getSignals();
+    }, this._refreshRate);
   };
 
   getState(): void {
-    this.stateService.getState()
-      .subscribe(rules => {console.log(rules); this._state = rules});
+
+    console.log(this._id);
+    this.stateService.getState(this._id)
+      .subscribe(rules => {this._state = rules});
   }
 
+  getSignals(): void {
+    console.log(this._id);
+    this.stateService.getSignals(this._id)
+      .subscribe(signals => {this._signals = signals});
+  }
 
 }

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { DashboardSelectorComponent } from './dashboard-selector/dashboard-selector.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     StateComponent,
     RulesDefinitionComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardSelectorComponent
   ],
   imports: [
     BrowserModule,
