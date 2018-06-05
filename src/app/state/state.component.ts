@@ -32,14 +32,11 @@ export class StateComponent implements OnInit {
   };
 
   getState(): void {
-
-    console.log(this._id);
     this.stateService.getState(this._id)
       .subscribe(rules => {this._state = rules});
   }
 
   getSignals(): void {
-    console.log(this._id);
     this.stateService.getSignals(this._id)
       .subscribe(signals => {this._signals = signals});
   }

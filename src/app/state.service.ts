@@ -11,16 +11,14 @@ export class StateService {
   private signalsUrl = 'http://localhost:8080/get-signals';
   private postRulesUrl = 'http://localhost:8080/add-rules';
   private dashboardsUrl = 'http://localhost:8080/get-dashboards';
+  private createDashboardUrl = 'http://localhost:8080/create-dashboard';
 
 
   getState(id): Observable<string> {
-    console.log("I am state service.");
-    console.log(id);
     return this.http.get<string>(this.stateUrl  + "/" + id);
   }
 
   getSignals(id): Observable<string> {
-    console.log("I am state signals.");
     return this.http.get<string>(this.signalsUrl + "/" + id);
   }
 
@@ -28,11 +26,16 @@ export class StateService {
     return this.http.get<string>(this.dashboardsUrl);
   }
 
-  postRules(rules) {
-    console.log(JSON.parse(rules));
-    this.http.post(this.postRulesUrl, rules).subscribe(
+  postRules(rules, id) {
+    this.http.post(this.postRulesUrl + "/" + id, rules).subscribe(
       (data) => data,
       (err) => {console.log(err); alert("Error generating rule.\n" + err.message)});
+  }
+
+  createDashboard(id) {
+    this.http.post(this.createDashboardUrl, id).subscribe(
+      (data) => data,
+      (err) => {console.log(err); alert("Error generating dashboard.\n" + err.message)});
   }
 
   constructor(private http: HttpClient) { }

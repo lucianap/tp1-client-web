@@ -10,7 +10,6 @@
     Counter values
   </div>
   <div class="card-body" *ngFor="let rule of _state.rules">
-
     <div *ngIf="rule.type == 'counter'">
       <ul class="list-group">
         <li class="list-group-item bg-dark text-white">
@@ -45,7 +44,6 @@
         {{rule | json}}
       </p>
     </div>
-
   </div>
 </div>
 
@@ -54,10 +52,14 @@
     Signal values
   </div>
   <div class="card-body" *ngFor="let signal of _signals">
-      <p>
-        {{signal | json}}
-      </p>
-
+    <ul class="list-group">
+      <li class="list-group-item bg-dark text-white">
+        <h5 class="card-title">{{signal[0]}}</h5>
+      </li>
+      <li class="list-group-item">
+        Type signal {{signal | json}}
+      </li>
+    </ul>
 
   </div>
 </div>

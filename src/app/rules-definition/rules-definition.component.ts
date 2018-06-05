@@ -10,18 +10,20 @@ export class RulesDefinitionComponent implements OnInit {
 
   _ruleCounter = '[["define-counter","spam-count",[],["current","spam"]]]';
   _ruleSignal = '[["define-signal",{"spam-fraction":["\\/",["counter-value","spam-count",[]],["counter-value","email-count",[]]]},true]]';
-
-
+  _newDashboard = '';
+  _toDashboard = 'default';
   constructor(private stateService: StateService) { }
 
   public addRuleCounter() {
-    console.log(this._ruleCounter);
-    this.stateService.postRules(this._ruleCounter);
+    this.stateService.postRules(this._ruleCounter, this._toDashboard);
   }
 
   public addRuleSignal() {
-    console.log(this._ruleSignal);
-    this.stateService.postRules(this._ruleSignal);
+    this.stateService.postRules(this._ruleSignal, this._toDashboard);
+  }
+
+  public createDashboard() {
+    this.stateService.createDashboard(this._newDashboard);
   }
 
   ngOnInit() {

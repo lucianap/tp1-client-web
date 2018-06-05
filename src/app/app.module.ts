@@ -10,6 +10,9 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { DashboardSelectorComponent } from './dashboard-selector/dashboard-selector.component';
+import { SignalComponent } from './signal/signal.component';
+import { ChartsModule } from 'ng2-charts';
+import { SignalChartComponent } from './signal-chart/signal-chart.component'; // <- HERE
 
 @NgModule({
   declarations: [
@@ -18,13 +21,16 @@ import { DashboardSelectorComponent } from './dashboard-selector/dashboard-selec
     RulesDefinitionComponent,
     HeaderComponent,
     HomeComponent,
-    DashboardSelectorComponent
+    DashboardSelectorComponent,
+    SignalComponent,
+    SignalChartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
