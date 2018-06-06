@@ -4,10 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
-import { Injectable } from '@angular/core';
 
-import {StompConfig, StompService} from '@stomp/ng2-stompjs';
-import { StompRService } from '@stomp/ng2-stompjs';
+import {StompService} from '@stomp/ng2-stompjs';
 import {Message} from '@stomp/stompjs';
 
 @Component({
@@ -17,13 +15,10 @@ import {Message} from '@stomp/stompjs';
 })
 export class SignalComponent implements OnInit {
 
-  _state: string;
-  _signals: string;
+  private _signals: string;
   interval: any;
-  _refreshRate = 2000;
-  _id = 'default';
-
-  _signalsMap = {};
+  private _id = 'default';
+  private _signalsMap = {};
 
   constructor(private stateService: StateService,
               private route: ActivatedRoute,
@@ -44,7 +39,6 @@ export class SignalComponent implements OnInit {
       .subscribe(signals => {
         this._signals = signals;
         JSON.parse(JSON.stringify(signals)).map(x => this.addToSignalMap(x));
-        this.addToSignalMap(signals);
       });
   }
 
@@ -86,8 +80,6 @@ export class SignalComponent implements OnInit {
       console.log(`Received: ${msg_body}`);
     });
   }
-
-
 
 }
 

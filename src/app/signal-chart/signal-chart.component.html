@@ -2,9 +2,10 @@
 
   <canvas baseChart
           height="50"
-          [data]="signalsData"
+          [datasets]="signalsData"
           [labels]="lineChartLabels"
           [chartType]="lineChartType"
+          [colors]="lineChartColors"
           (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)"></canvas>
 </div>
