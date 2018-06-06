@@ -49,13 +49,10 @@ export class SignalComponent implements OnInit {
   }
 
   public addToSignalMap(signal): void {
-    console.log("this is your shitty signal");
-    console.log(signal);
-    console.log((Object.values(signal)[0]));
-    console.log((Object.values(signal)[0] == 0));
+
     var time = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
     var elements = this._signalsMap[Object.keys(signal)[0]];
-    if(signal && !(Object.values(signal)[0] instanceof Array) && (Object.values(signal)[0])) {
+    if(this.isValidPoint(signal)) {
 
       if(typeof elements === "undefined") {
         this._signalsMap[Object.keys(signal)[0]] = [];
@@ -65,6 +62,10 @@ export class SignalComponent implements OnInit {
       }
 
     }
+  }
+
+  public isValidPoint (signal) {
+    return (signal && !(Object.values(signal)[0] instanceof Array) && (Object.values(signal)[0]));
   }
 
   public getDataOfMap(signal){
